@@ -1,0 +1,47 @@
+from fastapi import FastAPI
+import joblib
+import pandas as pd
+
+app = FastAPI()
+
+model = joblib.load("models/mobile_price_model.pkl")
+
+
+@app.get("/")
+def home():
+    return {"message": "Mobile Price Prediction API Running"}
+
+
+@app.get("/predict")
+def predict():
+
+    sample = [[842,0,2.2,0,1,0,7,0.6,188,2,2,20,756,2549,9,7,0,1,1,1452]]
+
+    columns = [
+        'battery_power',
+        'blue',
+        'clock_speed',
+        'dual_sim',
+        'fc',
+        'four_g',
+        'int_memory',
+        'm_dep',
+        'mobile_wt',
+        'n_cores',
+        'pc',
+        'px_height',
+        'px_width',
+        'ram',
+        'sc_h',
+        'sc_w',
+        'talk_time',
+        'three_g',
+        'touch_screen',
+        'wifi'
+    ]
+
+    df = pd.DataFrame(sample, columns=columns)
+
+    prediction = model.predict(df)
+
+    return {"prediction": int(prediction[0])}
