@@ -1,0 +1,23 @@
+artifact_path: file:c:/Users/rohan/Desktop/mobile-price-mlops/mlruns/1/models/m-8a87afd5e7624132975252ecc055288b/artifacts
+flavors:
+  python_function:
+    env:
+      conda: conda.yaml
+      virtualenv: python_env.yaml
+    loader_module: mlflow.sklearn
+    model_path: model.pkl
+    predict_fn: predict
+    python_version: 3.14.5
+  sklearn:
+    code: null
+    pickled_model: model.pkl
+    serialization_format: cloudpickle
+    sklearn_version: 1.8.0
+    skops_trusted_types: null
+mlflow_version: 3.12.0
+model_id: m-8a87afd5e7624132975252ecc055288b
+model_size_bytes: 31470
+model_uuid: m-8a87afd5e7624132975252ecc055288b
+prompts: null
+run_id: de29753433c94a1fa1e033f7547d7ff8
+utc_time_created: '2026-05-31 13:57:50.855797'
